@@ -18,7 +18,7 @@ MANAGER_IP=$(docker info -f '{{(index .Swarm.RemoteManagers 0).Addr}}' | sed -E 
 MANAGER_ADDR="tcp://$MANAGER_IP:$API_PORT"
 # MANAGER_IP=$(docker info -f '{{json (index .Swarm.RemoteManagers 0).Addr}}')
 
-NOTICE_URL=${NOTICE_URL:-http://169.254.169.254/latest/meta-data/spot/termination-time}
+NOTICE_URL=${NOTICE_URL:-http://169.254.169.254/latest/meta-data/spot/instance-action}
 
 echo "Polling ${NOTICE_URL} every ${POLL_INTERVAL} second(s), Manager: ${MANAGER_ADDR}, Node: ${NODE_ID}"
 
